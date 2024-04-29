@@ -12,4 +12,4 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az group create --name ADO --location 'East US'
-      az keyvault create --name MyKeyVault --resource-group ADO --location 'East US'
+      az keyvault create --name MaximilianoPruebaTecKeyVault --resource-group ADO --location 'East US'
