@@ -89,7 +89,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
     }
     subnets: [
       {
-        name: 'ThisTestSubNet'
+        name: 'vmSubNet1'
         properties: {
           addressPrefix: subnetPrefix
           networkSecurityGroup: {
