@@ -8,11 +8,11 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: AzurePowerShell@5
+- task: AzureCLI@2
   inputs:
     targetType: 'inline'
     azureSubscription: '$(acc)'
-    ScriptType: 'InlineScript'
+    scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
       vm_name=$(az vm list --query "[0].name" -o tsv)
@@ -37,7 +37,7 @@ steps:
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
       
       echo "configure Java env"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "setx JAVA_HOME 'C:\Program Files\Java\jdk1.8.0.211' /M; setx PATH \"%PATH%;C:\Program Files\Java\jdk1.8.0.211\bin\" /M"
+      
       echo "display env variables"
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
       echo "last restart"
