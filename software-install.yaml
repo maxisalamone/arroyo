@@ -8,11 +8,11 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: AzureCLI@2
+- task: AzurePowerShell@5
   inputs:
     targetType: 'inline'
     azureSubscription: '$(acc)'
-    scriptType: 'bash'
+    ScriptType: 'InlineScript'
     scriptLocation: 'inlineScript'
     inlineScript: |
       vm_name=$(az vm list --query "[0].name" -o tsv)
