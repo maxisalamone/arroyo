@@ -37,6 +37,7 @@ steps:
     azurePowerShellVersion: LatestVersion
     ScriptType: 'InlineScript'
     Inline: |
+      az login
       Write-Host 'add 2 users to key vault'
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
