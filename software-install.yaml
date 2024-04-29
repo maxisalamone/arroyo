@@ -19,7 +19,9 @@ steps:
       echo $vm_name
       echo "restarting"
       az vm restart --resource-group ADO --name $vm_name
-      # Install Chocolatey
+      
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Add-WindowsFeature NET-Framework-Core"
+      az vm restart --resource-group ADO --name $vm_name
       echo "Installing chocolatey"
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
       echo "chocolately installed, reinitiating"
