@@ -101,6 +101,16 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
   }
 }
 
+resource publicIp 'Microsoft.Network/publicIPAddresses@2022-05-01' = {
+  name: 'ArroyoPublicIP'
+  location: location
+  properties: {
+    publicIPAllocationMethod: 'Dynamic'
+    publicIPAddressVersion: 'IPv4'
+
+  }
+}
+
 resource nic 'Microsoft.Network/networkInterfaces@2022-01-01' = {
   name: 'ArroyoNIC'
   location: location
@@ -116,19 +126,12 @@ resource nic 'Microsoft.Network/networkInterfaces@2022-01-01' = {
           subnet: {
             id: '${virtualNetwork.id}/subnets/vmSubNet1'
           }
+          publicIpAddress: {
+            id: publicIp.id
+          }
         }
       }
     ]
-  }
-}
-
-resource publicIp 'Microsoft.Network/publicIPAddresses@2022-05-01' = {
-  name: 'ArroyoPublicIP'
-  location: location
-  properties: {
-    publicIPAllocationMethod: 'Dynamic'
-    publicIPAddressVersion: 'IPv4'
-
   }
 }
 
