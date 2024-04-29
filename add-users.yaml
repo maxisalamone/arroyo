@@ -37,14 +37,15 @@ steps:
     azurePowerShellVersion: LatestVersion
     ScriptType: 'InlineScript'
     Inline: |
-      Write-Host 'Hello'
-      Write-Host 'World!'
+      Write-Host 'add 2 users to key vault'
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
-      $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName
+      #$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName
+      $keyVault = az keyvault show --name $keyVaultName --resource-group $resourceGroupName
+
       $permissions = @("get", "set", "list", "delete")
       $username1 = "fabio.rincon@arroyoconsulting.net"
       $username2 = "andres.zapata@arroyoconsulting.net"
 
-      $userObjectId1 = (Get-AzADUser -UserPrincipalName $username1).Id
-      $userObjectId2 = (Get-AzADUser -UserPrincipalName $username2).Id
+      # $userObjectId1 = (Get-AzADUser -UserPrincipalName $username1).Id
+      # $userObjectId2 = (Get-AzADUser -UserPrincipalName $username2).Id
