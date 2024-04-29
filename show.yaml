@@ -16,3 +16,4 @@ steps:
     inlineScript: |
       echo "ip"
       az vm show --resource-group ADO --name ArroyoVM --query publicIps --output tsv
+      az vm show --resource-group ADO --query publicIps --output tsv
