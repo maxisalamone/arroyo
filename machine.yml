@@ -16,9 +16,18 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az group create --name ADO --location '$(location)'
-      az keyvault create --name MaxiPruebaTecKeyVault --resource-group ADO --location '$(location)'
-
+      rgExists=$(az group exists --name ADO)
+      echo $(rgExists)
+      if [ "$rgExists" = "false" ]; then
+        echo "creating res group"
+        az group create --name ADO --location '$(location)'
+      fi  
+      kvExists=$(az keyvault show --name MyKeyVault --resource-group ADO --query 'name' -o tsv)
+      echo $(kvExists)
+      if [ -z "$kvExists" ]; then
+        echo "creating kv"
+        az keyvault create --name MaxiPruebaTecKeyVault --resource-group ADO --location '$(location)'
+      fi
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
