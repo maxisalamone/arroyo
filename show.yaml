@@ -14,5 +14,5 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      # Get the public IP address of the VM
+      echo "ip"
       az vm show --resource-group ADO --name ArroyoVM --query publicIps --output tsv
