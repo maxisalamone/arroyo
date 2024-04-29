@@ -19,7 +19,7 @@ steps:
       echo $vm_name
       echo "restarting"
       az vm restart --resource-group ADO --name $vm_name
-      
+      echo "installing pre-requisites"
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Add-WindowsFeature NET-Framework-Core"
       az vm restart --resource-group ADO --name $vm_name
       echo "Installing chocolatey"
