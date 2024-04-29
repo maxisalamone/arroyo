@@ -1,13 +1,15 @@
+
+
 resource vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
   name: 'ArroyoVM'
-  location: 'your_location_here'
+  location: 'East US'
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_D2s_v3'
     }
     osProfile: {
-      computerName: 'myVM'
-      adminUsername: 'ArroyoVM'
+      computerName: 'ArroyoVM'
+      adminUsername: 'admin'
       adminPassword: 'FirstPass'
     }
     storageProfile: {
@@ -54,7 +56,7 @@ resource lock 'Microsoft.Authorization/locks@2016-09-01' = {
 
 resource nic 'Microsoft.Network/networkInterfaces@2021-07-01' = {
   name: 'myNIC'
-  location: 'your_location_here'
+  location: 'East US'
   properties: {
     ipConfigurations: [
       {
@@ -74,8 +76,8 @@ resource nic 'Microsoft.Network/networkInterfaces@2021-07-01' = {
 }
 
 resource publicIp 'Microsoft.Network/publicIPAddresses@2021-07-01' = {
-  name: 'myPublicIP'
-  location: 'your_location_here'
+  name: 'ArroyoPublicIP'
+  location: 'East US'
   properties: {
     publicIPAllocationMethod: 'Dynamic'
   }
