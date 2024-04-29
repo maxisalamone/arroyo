@@ -11,9 +11,9 @@ steps:
   inputs:
     azureSubscription: '$(acc)'
     ScriptType: 'InlineScript'
-    azurePowerShellVersion: 'LatestVersion'
+    #azurePowerShellVersion: 'LatestVersion'
     Inline: |
-      Connect-AzAccount
+      #Connect-AzAccount
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
       $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName
