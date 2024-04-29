@@ -174,7 +174,11 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-11-01' = {
     networkProfile: {
       networkInterfaces: [
         {
-          id: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{nicName}'
+          id: nic.id
+          properties: {
+            deleteOption: 'Detach'
+            primary: true
+          }
         }
       ]
     }
