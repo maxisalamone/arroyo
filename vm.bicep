@@ -130,7 +130,7 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2022-05-01' = {
   }
 }
 
-resource vm 'Microsoft.Compute/virtualMachines@2017-12-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2022-03-01' = {
   name: 'ArroyoVM'
   location: location
   properties: {
