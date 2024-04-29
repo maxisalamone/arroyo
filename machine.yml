@@ -6,6 +6,7 @@ variables:
   location: 'East US'
   acc: 'Arroyo_Challenge-Test_Maximiliano'
   vm_bicep: vm.bicep
+  vm_parameters: config.json
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -34,4 +35,5 @@ steps:
     resourceGroupName: 'ADO'
     location: '$(location)'
     templateLocation: 'Linked artifact'
-    csmFile: '$(vm_bicep)'      
+    csmFile: '$(vm_bicep)'
+    csmParametersFile: '$(vm_parameters)'
