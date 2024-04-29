@@ -29,15 +29,14 @@ steps:
       echo "Installing NodeJS"
       #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install nodejs -y"
       echo "installing Java"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install adoptopenjdk -y"
+      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install jdk8 -y"
       echo "installing VSC"
       #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install vscode -y"
       echo "installing Git"
       #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
       echo "configure Java env"
-      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem 'C:\Program Files\AdoptOpenJDK' | Select-Object -Last 1 | ForEach-Object { setx JAVA_HOME '$($_.FullName)' /M }"
-      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem 'C:\Program Files\AdoptOpenJDK' | Select-Object -Last 1 | ForEach-Object { setx JAVA_HOME '$($_.FullName)' /M }; setx PATH \"%PATH%;$($_.FullName)\bin\" /M"
+
       echo "display env variables"
-      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
+      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
       echo "last restart"
       #az vm restart --resource-group ADO --name $vm_name
