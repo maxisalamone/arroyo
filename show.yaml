@@ -16,5 +16,6 @@ steps:
     inlineScript: |
       echo "ip"
       vm_name=$(az vm list --query "[0].name" -o tsv)
+      echo $vm_name
       az vm show --resource-group ADO --name $vm_name --query publicIps --output tsv
     
