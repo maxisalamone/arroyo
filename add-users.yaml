@@ -6,7 +6,6 @@ variables:
 pool:
   vmImage: 'windows-latest'
 
-steps:
 # - task: PowerShell@2
 #   inputs:
 #     azureSubscription: '$(acc)'
@@ -31,13 +30,13 @@ steps:
 #       $accessPolicy1
 #       $accessPolicy2
       
-- task: AzurePowerShell@5
+steps:
+- task: AzureCLI@2
   inputs:
     azureSubscription: '$(acc)'
-    azurePowerShellVersion: LatestVersion
-    ScriptType: 'InlineScript'
-    Inline: |
-      az login
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
       Write-Host 'add 2 users to key vault'
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
