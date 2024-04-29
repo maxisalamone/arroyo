@@ -7,7 +7,6 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
   location: location
   properties: {
     securityRules: [
-      // Allow HTTP traffic (port 80)
       {
         name: 'allow-http'
         properties: {
@@ -20,8 +19,7 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
           sourceAddressPrefix: '*'
           destinationAddressPrefix: '*'
         }
-      },
-      // Allow HTTPS traffic (port 443)
+      }
       {
         name: 'allow-https'
         properties: {
@@ -34,8 +32,7 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
           sourceAddressPrefix: '*'
           destinationAddressPrefix: '*'
         }
-      },
-      // Allow SQL Server traffic (port 1433)
+      }
       {
         name: 'allow-sql-server'
         properties: {
@@ -48,8 +45,7 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
           sourceAddressPrefix: '*'
           destinationAddressPrefix: '*'
         }
-      },
-      // Allow Remote Desktop Protocol traffic (port 3389)
+      }
       {
         name: 'allow-rdp'
         properties: {
@@ -62,8 +58,7 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
           sourceAddressPrefix: '*'
           destinationAddressPrefix: '*'
         }
-      },
-      // Allow all outbound traffic
+      }
       {
         name: 'allow-outbound'
         properties: {
