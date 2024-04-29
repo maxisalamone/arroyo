@@ -1,5 +1,8 @@
 trigger: none
 
+variables:
+  acc: 'Arroyo_Challenge-Test_Maximiliano'
+
 pool:
   vmImage: 'windows-latest'
 
