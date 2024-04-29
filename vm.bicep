@@ -3,7 +3,7 @@ param user string
 param pass string
 
 resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-01' = {
-  name: ArroyoSecGroup
+  name: 'ArroyoSecGroup'
   location: location
   properties: {
     securityRules: [
@@ -82,7 +82,7 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-0
 }
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
-  name: ArroyoNW
+  name: 'ArroyoNW'
   location: location
   properties: {
     addressSpace: {
