@@ -114,7 +114,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2022-01-01' = {
         properties: {
           privateIPAllocationMethod: 'Dynamic'
           subnet: {
-            id: '${virtualNetwork.id}/subnets/${subnetName}'
+            id: '${virtualNetwork.id}/subnets/vmSubNet1'
           }
         }
       }
@@ -122,7 +122,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2022-01-01' = {
   }
 }
 
-resource publicIp 'Microsoft.Network/publicIPAddresses@2021-07-01' = {
+resource publicIp 'Microsoft.Network/publicIPAddresses@2022-05-01' = {
   name: 'ArroyoPublicIP'
   location: location
   properties: {
@@ -130,7 +130,7 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2021-07-01' = {
   }
 }
 
-resource vm 'Microsoft.Compute/virtualMachines@2023-11-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2017-12-01' = {
   name: 'ArroyoVM'
   location: location
   properties: {
