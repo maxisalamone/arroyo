@@ -43,5 +43,6 @@ steps:
       echo "last restart"
       #az vm restart --resource-group ADO --name $vm_name
 
-      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunCommand --scripts "cmd /c setx PATH \"%PATH%;C:\Windows\System32\" /M"
-      az vm restart --resource-group ADO --name $vm_name
+      az lock delete --name vmLock --resource-group ADO
+      az vm delete --resource-group ADO --name $vm_name --yes --no-wait
+
