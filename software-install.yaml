@@ -18,31 +18,27 @@ steps:
       vm_name=$(az vm list --query "[0].name" -o tsv)
       echo $vm_name
       echo "restarting"
-      #az vm restart --resource-group ADO --name $vm_name
+      az vm restart --resource-group ADO --name $vm_name
       # Install Chocolatey
       echo "Installing chocolatey"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
       echo "chocolately installed, reinitiating"
-      #az vm restart --resource-group ADO --name $vm_name
+      az vm restart --resource-group ADO --name $vm_name
       
       echo "Installing office"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install microsoft-office-deployment -y"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install microsoft-office-deployment -y"
       echo "Installing NodeJS"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install nodejs -y"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install nodejs -y"
       echo "installing Java"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install jdk8 -y"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install jdk8 -y"
       echo "installing VSC"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install vscode -y"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install vscode -y"
       echo "installing Git"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
       
       echo "configure Java env"
       #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "setx JAVA_HOME 'C:\Program Files\Java\jdk1.8.0.211' /M; setx PATH \"%PATH%;C:\Program Files\Java\jdk1.8.0.211\bin\" /M"
       echo "display env variables"
-      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
       echo "last restart"
-      #az vm restart --resource-group ADO --name $vm_name
-
-      az lock delete --name vmLock --resource-group ADO
-      az vm delete --resource-group ADO --name $vm_name --yes --no-wait
-
+      az vm restart --resource-group ADO --name $vm_name
