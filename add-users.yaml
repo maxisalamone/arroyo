@@ -11,7 +11,7 @@ steps:
   inputs:
     azureSubscription: '$(acc)'
     ScriptType: 'InlineScript'
-    #azurePowerShellVersion: 'LatestVersion'
+    azurePowerShellVersion: '4.238.7'
     Inline: |
       #Connect-AzAccount
       $resourceGroupName = "ADO"
