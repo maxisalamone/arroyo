@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      vmName=$(az vm list --query "[0].name" -o tsv)
+      echo "##vso[task.setvariable variable=vmName]$vmName"
+      # Install Chocolatey
+      az vm run-command invoke --resource-group ADO --name $(vmName) --command-id RunShellScript --scripts "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+
+      # Install Office using Chocolatey
+      #choco install microsoft-office
+
