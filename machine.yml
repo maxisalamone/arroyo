@@ -18,10 +18,7 @@ steps:
       if [ $(az group exists --name ADO) = false ]; then
         az group create --name ADO --location '$(location)'
       fi
-
-      kvExists=$(az keyvault show --name MaxiPruebaTecKeyVault --resource-group ADO --query 'name' -o tsv)
-      echo $(kvExists)
-      if [ -z "$kvExists" ]; then
+      if [ $(az keyvault show --name MaxiPruebaTecKeyVault --resource-group ADO --query 'name' -o tsv) = false ]; then
         echo "creating kv"
         az keyvault create --name MaxiPruebaTecKeyVault --resource-group ADO --location '$(location)'
       fi
