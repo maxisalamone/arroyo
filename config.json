@@ -1,7 +1,21 @@
 {
-  "location": "East US",
-  "user": "admin",
-  "pass": "FirstPass",
-  "addressPrefix": "10.0.0.0/16",
-  "subnetPrefix": "10.0.0.0/24"
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "East US"
+    },
+    "user": {
+      "value": "admin"
+    },
+    "pass": {
+      "value": "FirstPass"
+    },
+    "addressPrefix": {
+      "value": "10.0.0.0/16"
+    },
+    "subnetPrefix": {
+      "value": "10.0.0.0/24"
+    }
+  }
 }
