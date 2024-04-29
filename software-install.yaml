@@ -37,7 +37,7 @@ steps:
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
       
       echo "configure Java env"
-      
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name JAVA_HOME -Value 'C:\Program Files\Java\jdk1.8.0.211'; \$env:Path += ';C:\Program Files\Java\jdk1.8.0.211\bin'"
       echo "display env variables"
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "Get-ChildItem Env:"
       echo "last restart"
