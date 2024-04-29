@@ -4,7 +4,6 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: '$(acc)'
