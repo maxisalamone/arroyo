@@ -4,17 +4,27 @@ trigger:
 
 variables:
   location: 'East US'
-
+  acc: 'Arroyo_Challenge-Test_Maximiliano'
+  vm_bicep: vm.bicep
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'Arroyo_Challenge-Test_Maximiliano'
+    azureSubscription: '$(acc)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az group create --name ADO --location '$(location)'
       az keyvault create --name MaxiPruebaTecKeyVault --resource-group ADO --location '$(location)'
-      
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: '$(acc)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'ADO'
+    location: '$(location)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(vm_bicep)'      
