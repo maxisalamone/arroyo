@@ -7,13 +7,11 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: AzureCLI@2
+- task: AzurePowerShell@5
   inputs:
-    targetType: 'inline'
     azureSubscription: '$(acc)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
+    ScriptType: 'InlineScript'
+    Inline: |
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
       $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName
