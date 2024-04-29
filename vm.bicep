@@ -127,6 +127,8 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2022-05-01' = {
   location: location
   properties: {
     publicIPAllocationMethod: 'Dynamic'
+    publicIPAddressVersion: 'IPv4'
+
   }
 }
 
@@ -189,4 +191,4 @@ resource lock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 
 output vmName string = vm.name
-output publicIp string = publicIp.properties.ipAddress
+
