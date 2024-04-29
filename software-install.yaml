@@ -23,9 +23,14 @@ steps:
       echo "Installing chocolatey"
       #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
       echo "chocolately installed, reinitiating"
-      az vm restart --resource-group ADO --name $vm_name
+      #az vm restart --resource-group ADO --name $vm_name
       echo "Installing office"
-      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install microsoft-office-deployment -y"
-      echo "NodeJS"
+      #az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install microsoft-office-deployment -y"
+      echo "Installing NodeJS"
       az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install nodejs -y"
-  
+      echo "installing Java"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install adoptopenjdk -y"
+      echo "installing VSC"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install vscode -y"
+      echo "installing Git"
+      az vm run-command invoke --resource-group ADO --name $vm_name --command-id RunPowerShellScript --scripts "choco install git -y"
