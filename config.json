@@ -1,7 +1,7 @@
 {
   "location": "East US",
-  user: "admin",
-  pass: "FirstPass",
-  addressPrefix: '10.0.0.0/16',
-  subnetPrefix: '10.0.0.0/24'
+  "user": "admin",
+  "pass": "FirstPass",
+  "addressPrefix": "10.0.0.0/16",
+  "subnetPrefix": "10.0.0.0/24"
 }
