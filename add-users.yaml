@@ -11,6 +11,7 @@ steps:
   inputs:
     azureSubscription: '$(acc)'
     ScriptType: 'InlineScript'
+    azurePowerShellVersion: 'LatestVersion'
     Inline: |
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
