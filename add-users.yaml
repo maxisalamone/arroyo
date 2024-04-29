@@ -9,10 +9,10 @@ pool:
 steps:
 - task: AzureCLI@2
   inputs:
+    targetType: 'inline'
     azureSubscription: '$(acc)'
-    scriptType: 'powershell'
+    scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    azurePowerShellVersion: 'LatestVersion'
     inlineScript: |
       $resourceGroupName = "ADO"
       $keyVaultName = "MaxiPruebaTecKeyVault"
