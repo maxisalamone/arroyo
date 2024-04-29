@@ -16,13 +16,11 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      rgExists=$(az group exists --name ADO)
-      echo $(rgExists)
-      if [ "$rgExists" = "false" ]; then
-        echo "creating res group"
+      if [ $(az group exists --name ADO) = false ]; then
         az group create --name ADO --location '$(location)'
-      fi  
-      kvExists=$(az keyvault show --name MyKeyVault --resource-group ADO --query 'name' -o tsv)
+      fi
+
+      kvExists=$(az keyvault show --name MaxiPruebaTecKeyVault --resource-group ADO --query 'name' -o tsv)
       echo $(kvExists)
       if [ -z "$kvExists" ]; then
         echo "creating kv"
