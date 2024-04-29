@@ -189,4 +189,4 @@ resource lock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 
 output vmName string = vm.name
-output vmPublicIP string = publicIp.properties.ipAddress
+output publicIp string = publicIp.properties.ipAddress
