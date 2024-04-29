@@ -16,8 +16,9 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       vm_name=$(az vm list --query "[0].name" -o tsv)
+      
       # Install Chocolatey
-      #az vm run-command invoke --resource-group ADO --name $(vmName) --command-id RunShellScript --scripts "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
+      az vm run-command invoke --resource-group ADO --name $(vmName) --command-id RunShellScript --scripts "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"
 
       # Install Office using Chocolatey
       #choco install microsoft-office
