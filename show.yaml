@@ -1,0 +1,18 @@
+trigger:
+- none
+
+variables:
+  acc: 'Arroyo_Challenge-Test_Maximiliano'
+  
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'YourAzureSubscription'  # Name of your Azure service connection
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Get the public IP address of the VM
+      az vm show --resource-group ADO --name ArroyoVM --query publicIps --output tsv
