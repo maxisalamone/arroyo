@@ -15,5 +15,6 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       echo "ip"
-      az vm show --resource-group ADO --name ArroyoVM --query publicIps --output tsv
-      az vm show --resource-group ADO --query publicIps --output tsv
+      vm_name=$(az vm list --query "[0].name" -o tsv)
+      az vm show --resource-group ADO --name $vm_name --query publicIps --output tsv
+    
