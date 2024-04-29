@@ -10,7 +10,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: '$(acc)'
-    scriptType: 'bash'
+    scriptType: 'powershell'
     scriptLocation: 'inlineScript'
     azurePowerShellVersion: 'LatestVersion'
     inlineScript: |
