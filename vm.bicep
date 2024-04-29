@@ -1,16 +1,18 @@
-
+param location string
+param user string
+param pass string
 
 resource vm 'Microsoft.Compute/virtualMachines@2023-11-01' = {
   name: 'ArroyoVM'
-  location: 'East US'
+  location: location
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_D2s_v3'
     }
     osProfile: {
       computerName: 'ArroyoVM'
-      adminUsername: 'admin'
-      adminPassword: 'FirstPass'
+      adminUsername: user
+      adminPassword: pass
     }
     storageProfile: {
       imageReference: {
@@ -48,7 +50,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-11-01' = {
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
   name: ArroyoNW
-  location: 'East US'
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
@@ -79,7 +81,7 @@ resource lock 'Microsoft.Authorization/locks@2016-09-01' = {
 
 resource nic 'Microsoft.Network/networkInterfaces@2022-05-01' = {
   name: 'ArroyoNIC'
-  location: 'East US'
+  location: location
   properties: {
     ipConfigurations: [
       {
@@ -102,7 +104,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2022-05-01' = {
 
 resource publicIp 'Microsoft.Network/publicIPAddresses@2021-07-01' = {
   name: 'ArroyoPublicIP'
-  location: 'East US'
+  location: location
   properties: {
     publicIPAllocationMethod: 'Dynamic'
   }
