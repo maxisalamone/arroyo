@@ -99,26 +99,24 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
   }
 }
 
-resource nic 'Microsoft.Network/networkInterfaces@2022-05-01' = {
+resource nic 'Microsoft.Network/networkInterfaces@2022-01-01' = {
   name: 'ArroyoNIC'
   location: location
   properties: {
+    networkSecurityGroup: {
+      id: networkSecurityGroup.id
+    }
     ipConfigurations: [
       {
-        name: 'ipconfig1'
+        name: 'ipConfig1'
         properties: {
           privateIPAllocationMethod: 'Dynamic'
-          publicIPAddress: {
-            id: publicIp.id
-          }
           subnet: {
-            id: resourceId('Microsoft.Network/virtualNetworks/subnets', virtualNetworkName, subnetName)
+            id: '${virtualNetwork.id}/subnets/${subnetName}'
           }
         }
       }
     ]
-  }
-  dependsOn: [virtualNetwork]
   }
 }
 
