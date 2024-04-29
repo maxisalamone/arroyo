@@ -1,5 +1,9 @@
+
 trigger:
 - main
+
+variables:
+  location: 'East US'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -11,5 +15,6 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az group create --name ADO --location 'East US'
-      az keyvault create --name MaximilianoPruebaTecKeyVault --resource-group ADO --location 'East US'
+      az group create --name ADO --location '$(location)'
+      az keyvault create --name MaxiPruebaTecKeyVault --resource-group ADO --location '$(location)'
+      
