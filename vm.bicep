@@ -1,6 +1,8 @@
 param location string
 param user string
 param pass string
+param addressPrefix string
+param subnetPrefix string
 
 resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2022-05-01' = {
   name: 'ArroyoSecGroup'
@@ -87,7 +89,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
     }
     subnets: [
       {
-        name: subnetName
+        name: 'ThisTestSubNet'
         properties: {
           addressPrefix: subnetPrefix
           networkSecurityGroup: {
